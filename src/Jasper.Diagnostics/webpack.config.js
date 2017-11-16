@@ -50,17 +50,19 @@ export default createConfig([
       'process.env': {
         NODE_ENV: JSON.stringify(ENV)
       }
-    })
+    }),
+    new ManifestPlugin()
   ]),
   env('development', [
     entryPoint(path.join(__dirname, WEB_APP_ENTRY_POINT)),
     setOutput({
-      path: '/',
-      publicPath: '/'
+      path: path.join(__dirname, WEB_APP_DIR, PROD_OUTPUT_PATH),
+      publicPath: '/_diag/'
     }),
+    cssLoader(),
     devServer([
       `webpack-dev-server/client?http://localhost:${WEBPACK_DEV_PORT}`,
-      'webpack/hot/only-dev-server',
+      'webpack/hot/only-dev-server'
     ]),
     devServer.proxy({
       '*': { target: `http://localhost:${DEV_PORT}` }
@@ -68,7 +70,7 @@ export default createConfig([
     devServer.reactHot({
       exclude: /node_modules/
     }),
-    sourceMaps(),
+    sourceMaps()
   ]),
   env('production', [
     entryPoint({
@@ -96,8 +98,7 @@ export default createConfig([
           comments: false,
           screw_ie8: true
         }
-      }),
-      new ManifestPlugin()
+      })
     ])
   ])
 ])
