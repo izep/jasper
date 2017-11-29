@@ -21,6 +21,7 @@ import HandlerChainDetails from './HandlerChains/HandlerChainDetails'
 import Live from './Live/index'
 import EnvelopeDetails from './Live/EnvelopeDetails'
 import './App.css'
+import Subscriptions from './Subscriptions/'
 
 const Routes = ({ alert }) => {
   return (
@@ -30,11 +31,13 @@ const Routes = ({ alert }) => {
       <TopNav>
         <TopNavItem to="/" exact><AwesomeIcon icon="share-alt"/> Handler Chains</TopNavItem>
         <TopNavItem to="/live"><AwesomeIcon icon="envelope"/> Live Messages</TopNavItem>
+        <TopNavItem to="/subscriptions"><AwesomeIcon icon="exchange"/> Subscriptions</TopNavItem>
       </TopNav>
       <Container>
         <Row>
           <Col column={12}>
             <Route exact path="/" component={HandlerChains}/>
+            <Route path="/subscriptions" component={Subscriptions} />
             <Route path="/live" component={Live}/>
             <Route path="/envelope/:queue/:id" component={EnvelopeDetails}/>
             <Route path="/handler-chain/:id" component={HandlerChainDetails}/>

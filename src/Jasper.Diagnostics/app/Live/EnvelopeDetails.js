@@ -10,6 +10,7 @@ import Col from '../Components/Col'
 import StatusIndicator from '../Components/StatusIndicator'
 import AwesomeIcon from '../Components/AwesomeIcon'
 import './EnvelopeDetails.css'
+import ItemDetail from '../Components/ItemDetail'
 
 const NoMessage = () => {
   return (
@@ -44,17 +45,6 @@ const EnvelopeError = ({exception, stackTrace}) => {
 EnvelopeError.propTypes = {
   exception: PropTypes.string.isRequired,
   stackTrace: PropTypes.string.isRequired
-}
-
-const ItemDetail = ({label, value}) => {
-  return (
-    <div><span className="item-label">{label}:</span> {value}</div>
-  )
-}
-
-ItemDetail.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string
 }
 
 const EnvelopeDetails = ({ message, goBack }) => {
