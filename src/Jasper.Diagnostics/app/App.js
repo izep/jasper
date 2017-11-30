@@ -39,7 +39,7 @@ const Routes = ({ alert }) => {
             <Route exact path="/" component={Capabilities}/>
             <Route path="/subscriptions" component={Subscriptions} />
             <Route path="/live" component={Live}/>
-            <Route path="/envelope/:queue/:id" component={EnvelopeDetails}/>
+            <Route path="/envelope/:direction/:id" component={EnvelopeDetails}/>
             <Route path="/handler-chain/:id" component={HandlerChainDetails}/>
           </Col>
         </Row>
