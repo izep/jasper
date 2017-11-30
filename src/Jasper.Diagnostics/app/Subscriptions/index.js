@@ -3,7 +3,7 @@ import './index.css'
 import Card from '../Components/Card'
 import {default as Subscriptions} from './Subscriptions'
 
-const LiveIndex = (props) => {
+const LiveIndex = () => {
   return (
           <Card>
             <h2 className="header-title"> Persisted Subscriptions</h2>

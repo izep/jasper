@@ -1,12 +1,14 @@
 import {connect} from 'react-redux'
 import {default as React, PropTypes} from 'react'
-import {default as SubDetails } from './SubscriptionDetails.js'
+import {default as SubDetails } from '../Subscriptions/SubscriptionDetails.js'
+import Card from "../Components/Card"
 
 const Subscriptions = ({subscriptions}) => {
   const list = subscriptions.map((s, idx) => <SubDetails key={idx} subscription={s}/>)
-  return <div>
+  return <Card>
+      <h2 className="header-title">Declared Subscriptions</h2>
       {list}
-  </div>
+    </Card>
 }
 
 Subscriptions.propTypes = {
@@ -15,7 +17,7 @@ Subscriptions.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    subscriptions: state.subscriptionInfo.subscriptions
+    subscriptions: state.capabilities.declaredSubscriptions
   }
 }
 

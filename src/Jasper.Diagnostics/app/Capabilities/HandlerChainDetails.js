@@ -49,7 +49,7 @@ HandlerChainDetails.propTypes = {
 
 export default connect((state, props) => {
     return {
-      chain: state.handlerChains.chains.find(e => e.generatedTypeName === props.match.params.id)
+      chain: state.capabilities.chains.find(e => e.generatedTypeName === props.match.params.id)
     }
   },
   (dispatch, props)=> {

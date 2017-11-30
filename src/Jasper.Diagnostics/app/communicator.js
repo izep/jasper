@@ -21,8 +21,8 @@ export default function Communicator(dispatch, address, disconnect) {
 
   this.socket.onopen = () => {
     console.log('Opened a socket at ' + address)
-    this.send({type: 'request-initial-data'})
-    this.send({type: 'request-bus-subscriptions'})
+    this.send({type: 'diagnostics-request-data'})
+    // this.send({type: 'request-bus-subscriptions'})
   }
 
   this.send = (message) => {

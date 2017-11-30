@@ -7,16 +7,13 @@ namespace Jasper.Diagnostics.Messages
 {
     public static class DiagnosticsHandler
     {
-        public static InitialData Receive(RequestInitialData message, HandlerGraph graph)
+        public static async Task<DiagnosticData> Receive(RequestDiagnosticData message, HandlerGraph graph, ISubscriptionsRepository subscriptionsRepository, JasperRuntime runtime)
         {
+            var storedSubs = await subscriptionsRepository.GetSubscriptions();
             var chains = graph.Chains.OrderBy(c => c.TypeName).Select(ChainModel.For);
-            return new InitialData(chains);
-        }
-
-        public static async Task<BusSubscriptions> Receive(RequestBusSubscriptions message, ISubscriptionsRepository subscriptionsRepository)
-        {
-            var subs = await subscriptionsRepository.GetSubscriptions();
-            return new BusSubscriptions(subs);
+            var pubs = runtime.Capabilities.Published;
+            var declaredSubs = runtime.Capabilities.Subscriptions;
+            return new DiagnosticData(chains, storedSubs, pubs,declaredSubs);
         }
     }
 }

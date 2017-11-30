@@ -4,9 +4,9 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch(action.type) {
-    case 'bus-subscriptions':
+    case 'diagnostic-data':
       return {
-        subscriptions: action.subscriptions
+        subscriptions: action.storedSubscriptions
       }
     default: return state
   }
